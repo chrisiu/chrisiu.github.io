@@ -1,0 +1,49 @@
+header {
+    padding-top: 100px; 
+  }
+
+  .contact-info a {
+    text-decoration: underline;
+    color: inherit; 
+  }
+
+
+body {
+    background-color: #dacaef;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.centered-image {
+    max-width: 150px;
+    display: block;
+    margin: 50px auto;
+    border-radius: 50%;
+    box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.1); /* Add shadow here */
+    border: 0.01px solid rgba(0, 0, 0, 0.1); /* Add a slight outline */
+
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: #6a1b9a;
+    color: #fff;
+    transition: background-color 0.3s;
+    box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.1); /* Add shadow here */
+
+}
+
+.button:hover {
+    background-color: #4a148c;
+}
+.about-me {
+    margin-top: 80px;
+    margin-left: 300px;
+    margin-right: 300px;
+    line-height: 1.6; 
+}
