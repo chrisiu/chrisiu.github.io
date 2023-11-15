@@ -1,43 +1,115 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Resume</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <title>Resume</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            overflow: scroll;
+        }
+        .resume{
+        margin-left: 125px;
+        margin-right: 125px;
+        }
 
+        canvas {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.5;
+        }
+    </style>
 </head>
+<h1>Portfolio</h1>
+<br>
 
-<body>
 
 
+    <div class="resume">
+        <h2>StudyBuzz Prototype for HackTX 2023 (Full Stack)</h2>
+        <p><i>Fall 2023</i></p>
 
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moving Lines Background</title>
-<style>
-  body {
-    margin: 0;
-    overflow: hidden;
-  }
+
+        <p><i>Collaborators: Nandha Gopikannan, Abhinav Sheshadri, Amit Kancherla</i></p>
+
+        <ul>
+            <li>●	Trained an AI large language model to summarize lectures based on a large dataset of 6,500 books</li>
+            <li>●	Connected the Python backend to the frontend, which includes HTML, CSS, and JavaScript developed with React, using Flask</li>
+            <li>●	Worked with a team on the project and presented the idea to over 500 attendees of HackTX</li>
+        </ul>
+    </div>
+    
+    <div class="links">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/afKA8uOFnxw?si=MGMVo0ueYsuLcR5T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    </div>
+    </body>
+    <a class="button2" href="https://github.com/nandhag29/StudyBuzz/tree/main"target="_blank">Repository Link</a>
+    <div class="resume">
+        <h2>Insurance Chatbot for Aflac Insurance Pitch (Java)</h2>
+        <p><i>Summer 2023</i></p>
+        <p><i>Collaborators: Nandha Gopikannan</i></p>
+        
+        <ul>
+            <li>●	Collaborated on insurance agent chatbot using Java and Swing, and pitched to Aflac Insurance to optimize company efficiency </li>
+        </ul>
+    </div>
+    
+    <div class="links">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/PyfWdzrEftg?si=5RJn2Fm3B9EVFBFP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    </div>
+    <a class="button2" href="https://github.com/chrisiu/AiAgent/tree/main"target="_blank">Repository Link</a>
   
-  canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.5;
-  }
-</style>
+    
 </head>
 <body>
+    <div class="resume">
+        <h2>Intro to Software Systems Projects (Java)</h2>
+        <p><i>Spring 2023</i></p>
+        <ul>
+            <li>●	Ray Marcher: The Ray Marcher is a Java program that generates a random assortment of circles and rectangles in a 2D space using Java Swing. It then employs a ray marching algorithm to render the scene, with circles that detect the closest object to the user's mouse.</li>
+            <li>●	Library System: Given a data base of books, the user can interact with this library system using commands provided in the program including sorting books, borrowing books, showing inventory statistics, etc.</li>
+            <li>●	TicTacToe: A TicTacToe program allowing you to play against other players or a computer-controlled character. Matches are stored and can then be replayed. </li>
+        </ul>
+    </div>
+</body>
+<a class="button2" href="https://github.com/stars/chrisiu/lists/project-portfolio"target="_blank">Repository Link</a>
+
+<body>
+    <div class="resume">
+        <h2>AI Music Recommender for Inspirit AI (Python)</h2>
+        <p><i>Summer 2021</i></p>
+        <p><i>Collaborators: Lovleen Virdi, Kyler Shu, Zoya Khwaja</i></p>
+        <ul>
+            <li>●	Collaborated with a team to create and present a machine learning music recommendation system</li>
+            <li>●	Implemented logistic regression, cosine similarity, and k-nearest neighbor algorithms to enhance recommendation accuracy</li>
+            <li>●	Received certificate of completion from Inspirit AI: AI taught by Stanford/MIT alumni</li>
+        </ul>
+    </div>
+
+    <!-- Add the links section here -->
+    <div class="links">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/-_jnn5Pppdk?si=rXK4jlTz912IOY6n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    </div>
+</body>
+<a class="button2" href="https://github.com/chrisiu/aimusicrecommendation"target="_blank">Repository Link</a>
+
+
+</html>
+<br>
+
+<hr>
+<br>
+
+
+<a class="button" href="index.html">Home</a>
+
+
+
 
 <canvas id="lines"></canvas>
 

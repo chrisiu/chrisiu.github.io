@@ -9,11 +9,17 @@ header {
 
 
 body {
-    background-color: #dacaef;
+    background-color: hsla(199, 93%, 88%, 0.395);
     text-align: center;
     font-family: Arial, sans-serif;
+
+
 }
 
+hr {
+    width:15%;
+    margin:0 auto;
+}
 .centered-image {
     max-width: 150px;
     display: block;
@@ -31,7 +37,20 @@ body {
     text-decoration: none;
     font-size: 18px;
     border-radius: 5px;
-    background-color: #6a1b9a;
+    background-color: #4e4cb8;
+    color: #fff;
+    transition: background-color 0.3s;
+    box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.1); /* Add shadow here */
+
+}
+.button2 {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 3px;
+    background-color: #4e4cb8;
     color: #fff;
     transition: background-color 0.3s;
     box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.1); /* Add shadow here */
@@ -39,11 +58,22 @@ body {
 }
 
 .button:hover {
-    background-color: #4a148c;
+    background-color: #5226c9;
 }
 .about-me {
     margin-top: 80px;
     margin-left: 300px;
     margin-right: 300px;
     line-height: 1.6; 
+
+}.resume ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.resume ul li {
+    margin-left: 0;
+    padding-left: 0;
+    text-indent: -1em; /* Adjust the indentation as needed */
+    line-height: 2.6; 
 }
