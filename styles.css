@@ -1,79 +1,79 @@
-header {
-    padding-top: 100px; 
-  }
-
-  .contact-info a {
-    text-decoration: underline;
-    color: inherit; 
-  }
-
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap');
 
 body {
-    background-color: hsla(199, 93%, 88%, 0.395);
-    text-align: center;
-    font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1.6;
+  text-align: center;
+}
 
+header {
+  padding-top: 80px;
+}
 
+.contact-info a {
+  text-decoration: none;
+  color: #4fc3f7;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #81d4fa;
 }
 
 hr {
-    width:15%;
-    margin:0 auto;
+  width: 50px;
+  margin: 30px auto;
+  border: none;
+  border-top: 2px solid #ffffff;
 }
+
 .centered-image {
-    max-width: 150px;
-    display: block;
-    margin: 50px auto;
-    border-radius: 50%;
-    box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.1); /* Add shadow here */
-    border: 0.01px solid rgba(0, 0, 0, 0.1); /* Add a slight outline */
-
+  max-width: 180px;
+  display: block;
+  margin: 60px auto;
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(79, 195, 247, 0.2);
 }
 
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px;
-    text-decoration: none;
-    font-size: 18px;
-    border-radius: 5px;
-    background-color: #4e4cb8;
-    color: #fff;
-    transition: background-color 0.3s;
-    box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.1); /* Add shadow here */
-
-}
-.button2 {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px;
-    text-decoration: none;
-    font-size: 15px;
-    border-radius: 3px;
-    background-color: #4e4cb8;
-    color: #fff;
-    transition: background-color 0.3s;
-    box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.1); /* Add shadow here */
-
+.button, .button2 {
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 15px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 4px;
+  background-color: #d8d8d8;
+  color: #121212;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(79, 195, 247, 0.1);
 }
 
-.button:hover {
-    background-color: #5226c9;
+.button:hover, .button2:hover {
+  background-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(79, 195, 247, 0.2);
 }
+
 .about-me {
-    margin-top: 80px;
-    margin-left: 300px;
-    margin-right: 300px;
-    line-height: 1.6; 
+  margin: 80px auto;
+  max-width: 800px;
+  padding: 0 20px;
+}
 
-}.resume ul {
-    list-style-type: none;
-    padding: 0;
+.resume ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 .resume ul li {
-    margin-left: 0;
-    padding-left: 0;
-    text-indent: -1em; /* Adjust the indentation as needed */
-    line-height: 2.6; 
+  margin-bottom: 20px;
+  padding-left: 0;
+  position: relative;
+}
+
+.resume ul li::before {
+  content: none;
 }
