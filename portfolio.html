@@ -1,249 +1,402 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            overflow: scroll;
-        }
-        .resume{
-        margin-left: 125px;
-        margin-right: 125px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chris Haleas - Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html {
+      min-height: 100%;
+      background: linear-gradient(135deg, #7b91f1 0%, #000000 100%) fixed;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      overflow-x: hidden;
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+    }
+    .bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; }
 
-        canvas {
-            position: fixed;
+    .floating-switch {
+      position: fixed;
+      top: 1.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      background: none;
+      border: none;
+      pointer-events: auto;
+    }
+    nav.nav-switch {
+      display: inline-flex;
+      gap: 0;
+      background: none;
+      border-radius: 50px;
+      overflow: hidden;
+      user-select: none;
+      box-shadow: 0 5px 22px rgba(0,0,0,0.11), 0 1.5px 6px rgba(30,60,60,0.14);
+    }
+    nav.nav-switch a {
+      padding: 0.7rem 1.65rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #222;
+      background: #fff;
+      border: none;
+      outline: none;
+      margin: 0;
+      border-right: 1.5px solid #e4e7ef;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      transition: background 0.22s, color 0.22s, box-shadow 0.25s;
+      user-select: none;
+      border-radius: 0;
+      box-shadow: none;
+      position: relative;
+      z-index: 1;
+    }
+    nav.nav-switch a:last-child { border-right: none; }
+    nav.nav-switch a.active {
+      background: #7b91f1e8;
+      color: #2d2a00;
+      font-weight: 700;
+      pointer-events: none;
+      box-shadow: 0 5px 12px rgba(255,217,92,0.25) inset;
+    }
+    nav.nav-switch a:hover:not(.active) {
+      background: #fbfefdee;
+      color: #7b91f1e8;
+      box-shadow: 0 0 0 2.2px #b2ccfe inset;
+    }
 
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.5;
-        }
-    </style>
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; }
+    header { text-align: center; padding: 6rem 0 3rem; }
+    .name { font-size: clamp(3rem, 6vw, 5rem); font-weight: 200; letter-spacing: -0.02em; margin-bottom: 1rem; color: white; text-shadow: 0 2px 20px rgba(0,0,0,0.3);}
+    .tagline { font-size: 1.2rem; color: rgba(255,255,255,0.8); font-weight: 300; margin-bottom: 2rem;}
+
+    .about-section, .portfolio-section {
+      max-width: 900px;
+      margin: 2.5rem auto 2.5rem;
+      text-align: center;
+    }
+    .section-title {
+      font-size: clamp(2.7rem, 5vw, 4.5rem);
+      font-weight: 200;
+      letter-spacing: -0.02em;
+      margin-top: 6.5rem;
+      margin-bottom: 0.5rem;
+      color: white;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.24);
+      text-align: center;
+    }
+    .about-text, .portfolio-item {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 30px;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      margin-bottom: 3rem;
+    }
+    .portfolio-item h2 { margin-bottom: 0.2em; }
+    .project-context {
+      font-size: 1rem;
+      color: #cfd8ff;
+      margin-bottom: 0.7em;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+    .links {
+      text-align: center;
+      width: 100%;
+      margin-top: 1.5em;
+    }
+    .links iframe {
+      display: block;
+      margin: 0 auto 1em auto;
+      max-width: 100%;
+    }
+    .button2 {
+      display:inline-block;
+      padding:1rem 2rem;
+      margin:1rem auto 2rem;
+      text-decoration:none;
+      color:white;
+      border:2px solid rgba(255,255,255,0.3);
+      border-radius:50px;
+      font-weight:500;
+      font-size:1rem;
+      background:rgba(255,255,255,0.15);
+      backdrop-filter:blur(15px);
+      transition:all 0.3s;
+      margin-right: 0.6em;
+      margin-left: 0.6em;
+    }
+    .button2:hover{
+      background:rgba(255,255,255,0.2);
+      border-color:rgba(255,255,255,0.5);
+      transform:translateY(-3px);
+    }
+    /* Mini PDF preview styles */
+    .pdf-mini-container {
+      margin: 2rem auto 1.5rem auto;
+      text-align: center;
+    }
+    .pdf-mini {
+      width: 270px;
+      height: 350px;
+      border-radius: 16px;
+      border: 1.5px solid rgba(123,145,241,0.3);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.13);
+      background: #fff;
+      margin-bottom: 0.85rem;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    @media (max-width: 600px){
+      .pdf-mini { width: 95vw; max-width: 98vw; height: 180px; }
+    }
+    .pdf-mini-container .button2 {
+      margin: 0 0.5rem 0.7rem 0.5rem;
+      display: inline-block;
+    }
+    @media (max-width: 768px) {
+      .container{padding:0 1rem;}
+      header{padding:4rem 0 2rem;}
+      .about-text, .portfolio-item{padding: 2rem; font-size: 1.1rem;}
+    }
+  </style>
 </head>
-<h1>Portfolio</h1>
-<br>
-
-<div class="resume">
-  <h2>Trade Outcome Prediction Model for NFL Players (Python)</h2>
-  <p><i>Fall 2024</i></p>
-  <p><i>Collaborators: Andrew Eby</i></p>
-  <ul>
-    <li>● Developed an NFL Trade Impact Analysis Tool to predict player performance changes when traded, focusing on offensive positions.</li>
-    <li>● Processed a Kaggle dataset (2012-2023) to calculate normalized performance scores and aggregate them into team metrics.</li>
-    <li>● Trained a Linear Regression model to predict trade impact using historical player data.</li>
-    <li>● Created heatmap visualizations to highlight team strengths and weaknesses for trade evaluation.</li>
-    <li>● Evaluated model performance with R², RMSE, and MAE for accurate trade outcome predictions.</li>
-</ul>
-</div>
-
-<div class="links">
-
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/WOEZEPdm62Y?si=JkWXA4z_d2UAydGR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-</div>
-<a class="button2" href="https://github.com/chrisiu/Trade-Outcome-Prediction-Model-for-NFL-Players"target="_blank">Repository Link</a>
-
-<br><br>
-
-<div class="resume">
-  <h2> Fashion Forward: Fashion Recommendation System (Python) </h2>
-  <p><i>Spring 2024</i></p>
-
-
-  <p><i>Collaborators: Andrew Eby, Sanmeet Singh, and Rehaan Rafi</i></p>
-
-  <ul>
-      <li>● Developed a Fashion Recommendation System, enabling users to receive clothing recommendations based on entered attributes</li>
-      <li>● Trained K-Nearest Neighbors, Random Forest, and Decision Tree models on 45,000 clothing items using scikit-learn</li>
-      <li>● Evaluated recommendation accuracy by computing cosine similarity between user preferences and predicted items</li>
-  </ul>
-</div>
-
-<div class="links">
-
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/oI70iciBcaI?si=nilMMyRYqpH-6ll9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></body>
-</div>
-<a class="button2" href="https://github.com/chrisiu/fashionforward"target="_blank">Repository Link</a>
-
-<br><br>
-
-
-    <div class="resume">
-        <h2>StudyBuzz Prototype for HackTX 2023 (Full Stack)</h2>
-        <p><i>Fall 2023</i></p>
-
-
-        <p><i>Collaborators: Nandha Gopikannan, Abhinav Sheshadri, Amit Kancherla</i></p>
-
-        <ul>
-            <li>●	Trained an AI large language model to summarize lectures based on a large dataset of 6,500 books</li>
-            <li>●	Connected the Python backend to the frontend, which includes HTML, CSS, and JavaScript developed with React, using Flask</li>
-            <li>●	Worked with a team on the project and presented the idea to over 500 attendees of HackTX</li>
-        </ul>
-    </div>
-    
-    <div class="links">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/afKA8uOFnxw?si=MGMVo0ueYsuLcR5T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    </div>
-    </body>
-    <a class="button2" href="https://github.com/nandhag29/StudyBuzz/tree/main"target="_blank">Repository Link</a>
-
-    <br><br>
-
-
-    <div class="resume">
-
-        <h2>Insurance Chatbot for Aflac Insurance Pitch (Java)</h2>
-        <p><i>Summer 2023</i></p>
-        <p><i>Collaborators: Nandha Gopikannan</i></p>
-        
-        <ul>
-            <li>●	Collaborated on insurance agent chatbot using Java and Swing, and pitched to Aflac Insurance to optimize company efficiency </li>
-        </ul>
-    </div>
-    
-    <div class="links">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/PyfWdzrEftg?si=5RJn2Fm3B9EVFBFP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    </div>
-    <a class="button2" href="https://github.com/chrisiu/AiAgent/tree/main"target="_blank">Repository Link</a>
-  
-    
-</head>
-<br><br>
-
-
-
 <body>
-    <div class="resume">
-        <h2>AI Music Recommender for Inspirit AI (Python)</h2>
-        <p><i>Summer 2021</i></p>
-        <p><i>Collaborators: Lovleen Virdi, Kyler Shu, Zoya Khwaja</i></p>
-        <ul>
-            <li>●	Collaborated with a team to create and present a machine learning music recommendation system</li>
-            <li>●	Implemented logistic regression, cosine similarity, and k-nearest neighbor algorithms to enhance recommendation accuracy</li>
-            <li>●	Received certificate of completion from Inspirit AI: AI taught by Stanford/MIT alumni</li>
-        </ul>
+  <canvas class="bg-canvas" id="particles"></canvas>
+
+  <!-- Floating nav switch at the very top center -->
+  <div class="floating-switch">
+    <nav class="nav-switch">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html" class="active">Portfolio</a>
+      <a href="resume.html">Resume</a>
+      <a href="contactme.html">Contact Me</a>
+    </nav>
+  </div>
+
+
+  <section class="portfolio-section">
+    <h2 class="section-title">Portfolio</h2>
+
+    <!-- Scrollos -->
+    <div class="portfolio-item">
+      <h2>Scrollos: AI Research Discovery Platform</h2>
+      <div class="project-context"></div>
+      <p><i>Python, HTML, CSS, JavaScript, Flask, MongoDB, Firebase Auth, LangChain, GPT-4</i></p>
+      <ul>
+        <li>Developed a full-stack platform for discovering and sharing computer science research papers and materials using Flask and Python, with MongoDB for structured data storage and Firebase Authentication for profile management of users.</li>
+        <li>Integrated OpenAI GPT-4 and LangChain to summarize arXiv research papers and generate engaging short-form content.</li>
+        <li>Built a web-app with JavaScript, HTML, and CSS, featuring infinite scroll and intuitive content discovery and upload functionality.</li>
+      </ul>
     </div>
 
-    <div class="links">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/-_jnn5Pppdk?si=rXK4jlTz912IOY6n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    </div>
-</body>
-<a class="button2" href="https://github.com/chrisiu/aimusicrecommendation"target="_blank">Repository Link</a>
+    <!-- Exploring Empathy of Leading LLMs, with PDF preview -->
+    <div class="portfolio-item">
+      <h2>Exploring Empathy of Leading LLMs</h2>
+      <div class="project-context">for Trustworthy ML Course & Master’s Research</div>
+      <p><i>Python, PyTorch, Gradio, Matplotlib, LLMs</i></p>
+      <ul>
+        <li>Evaluated empathy in AI therapeutic responses by comparing outputs from 4 large language models (LLaMA 3.2, OpenAI GPT-4o, Claude 3.7 Sonnet, Gemini 2.5 Pro) against human psychologist responses, using 35+ anonymous survey evaluations.</li>
+        <li>Developed an empathy classifier system using BERT-base-uncased with feature-based transfer learning, achieving 0.35 MSE.</li>
+        <li>Built an interactive Gradio UI to evaluate the empathy of text input and analyzed its robustness against 10 adversarial attacks.</li>
+      </ul>
+      <!-- PDF Mini Preview -->
+      <div class="pdf-mini-container">
+        <iframe class="pdf-mini"
+          src="Exploring_the_Empathy_of_Leading_Large_Language_Models.pdf#toolbar=0"
+          title="PDF preview: Exploring the Empathy of Leading LLMs"></iframe>
+        <div>
+          <a class="button2"
+             href="Exploring_the_Empathy_of_Leading_Large_Language_Models.pdf"
+             target="_blank" download>View PDF</a>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- CNNs Against Adversarial Attacks in Face Recognition, with PDF preview -->
+    <div class="portfolio-item">
+      <h2>CNNs Against Adversarial Attacks in Face Recognition</h2>
+      <div class="project-context">for Computer Vision Course</div>
+      <p><i>Python, PyTorch, Matplotlib</i></p>
+      <ul>
+        <li>Fine-tuned 6 Convolutional Neural Networks (EfficientNetB0, ResNet-18, DenseNet121, Inception v1, Regnet X 400MF, SqueezeNet 1.1) using PyTorch and transfer learning for binary classification of real vs. altered facial images.</li>
+        <li>Engineered black-box adversarial attack pipelines (Gaussian noise, RGB color shift, black patch occlusion) to assess robustness.</li>
+        <li>Evaluated model performance using F1-scores, confusion matrices, and radar charts; identified DenseNet121 as most resilient.</li>
+      </ul>
+      <!-- PDF Mini Preview -->
+      <div class="pdf-mini-container">
+        <iframe class="pdf-mini"
+          src="Adversarial Attacks in Face Recognition.pdf#toolbar=0"
+          title="PDF preview: Adversarial Attacks in Face Recognition"></iframe>
+        <div>
+          <a class="button2"
+             href="Adversarial Attacks in Face Recognition.pdf"
+             target="_blank"
+             download>View PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Safety Classification Model -->
+    <div class="portfolio-item">
+      <h2>Content Safety Classification Model</h2>
+      <div class="project-context">for Trustworthy Machine Learning Course</div>
+      <p><i>Python, PyTorch, Streamlit, Matplotlib</i></p>
+      <ul>
+        <li>Developed and trained an NLP model using RoBERTa architecture to classify text for content safety, achieving 84% accuracy.</li>
+        <li>Implemented a real-time Streamlit web application that integrates the trained model, allowing users to evaluate content safety.</li>
+        <li>Designed and conducted adversarial attack demonstrations to identify model vulnerabilities.</li>
+      </ul>
+        <div class="links">
+            <a class="button2" href="https://colab.research.google.com/drive/1n8bUcjqEDd6-ilt1FULqeHjp8DtOuwPG?usp=sharing" target="_blank">Google Colab Notebook</a>
+        </div>
+    </div>
 
 
-</html>
-<br>
 
-<hr>
-<br>
+    <!-- NFL Trade Analysis for Data Analysis and Mining Course -->
+    <div class="portfolio-item">
+      <h2>NFL Trade Analysis</h2>
+      <div class="project-context">for Data Analysis and Mining Course</div>
+      <p><i>Python, pandas, scikit-learn, Seaborn, Matplotlib</i></p>
+      <ul>
+        <li>Leveraged a Kaggle dataset to compute composite performance scores for NFL players by position using MinMax scaling of statistics.</li>
+        <li>Visualized team trends using Seaborn heatmaps and implemented a grading system to evaluate positional strengths across teams.</li>
+        <li>Trained a scikit-learn logistic regression model to predict team future improvement probability, achieving 65% accuracy.</li>
+      </ul>
+      <div class="links">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/WOEZEPdm62Y?si=JkWXA4z_d2UAydGR" frameborder="0" allowfullscreen></iframe>
+        <a class="button2" href="https://github.com/chrisiu/Trade-Outcome-Prediction-Model-for-NFL-Players" target="_blank">Repository Link</a>
+      </div>
+    </div>
 
+    <!-- Fashion Forward for Artificial Intelligence Course -->
+    <div class="portfolio-item">
+      <h2>Fashion Forward</h2>
+      <div class="project-context">for Artificial Intelligence Course</div>
+      <p><i>Python, pandas, scikit-learn</i></p>
+      <ul>
+        <li>Developed a Fashion Recommendation System, enabling users to receive clothing recommendations based on entered attributes.</li>
+        <li>Trained and compared K-Nearest Neighbors, Random Forest, and Decision Tree models on 45,000 clothing items with scikit-learn.</li>
+        <li>Evaluated recommendation accuracy by computing cosine similarity between user preferences and predicted item attributes.</li>
+      </ul>
+      <div class="links">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/oI70iciBcaI?si=nilMMyRYqpH-6ll9" frameborder="0" allowfullscreen></iframe>
+        <a class="button2" href="https://github.com/chrisiu/fashionforward" target="_blank">Repository Link</a>
+      </div>
+    </div>
 
-<a class="button" href="index.html">Home</a>
-
-
-
-
-<canvas id="lines"></canvas>
-
-<script>
-  const canvas = document.getElementById("lines");
-  const ctx = canvas.getContext("2d");
-
-  let mouseX = 0;
-  let mouseY = 0;
-  let isHovered = false;
-
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const lines = [];
-
-  function Line(x, y, length, angle) {
-    this.x = x;
-    this.y = y;
-    this.length = length;
-    this.angle = angle;
-
-    this.draw = function() {
-      const endX = this.x + Math.cos(this.angle) * this.length;
-      const endY = this.y + Math.sin(this.angle) * this.length;
-      ctx.beginPath();
-      ctx.moveTo(this.x, this.y);
-      ctx.lineTo(endX, endY);
-      ctx.strokeStyle = "rgba(169, 169, 169, 0.5)";
-      ctx.lineWidth = 1;
-      ctx.stroke();
+    <!-- StudyBuzz MVP for HackTX -->
+    <div class="portfolio-item">
+      <h2>StudyBuzz MVP</h2>
+      <div class="project-context">for HackTX</div>
+      <p><i>Python, HTML, CSS, JavaScript, PyTorch, Node.js, React, Flask</i></p>
+      <ul>
+        <li>Built an AI-powered web app at HackTX to generate concise lecture summaries; further developed through the Sparklab Incubator.</li>
+        <li>Trained a Longformer Encoder-Decoder model on a dataset of 6500+ books to generate accurate summaries of lecture video files.</li>
+        <li>Connected a Python backend to a React.js using Flask to create an intuitive user interface.</li>
+      </ul>
+      <div class="links">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/afKA8uOFnxw?si=MGMVo0ueYsuLcR5T" frameborder="0" allowfullscreen></iframe>
+        <a class="button2" href="https://github.com/nandhag29/StudyBuzz/tree/main" target="_blank">Repository Link</a>
+      </div>
+    </div>
+  </section>
+  <script>
+    // Animated particles background
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resizeCanvas();
+    const particles = [];
+    class Particle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+        this.opacity = Math.random() * 0.3 + 0.1;
+      }
+      update() {
+        const dx = mouseX - this.x;
+        const dy = mouseY - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < 80) {
+          const force = (80 - distance) / 80;
+          this.x -= (dx / distance) * force * 1;
+          this.y -= (dy / distance) * force * 1;
+        }
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.y < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = 0;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.fill();
+      }
     }
-  }
-
-  function createLines() {
-    const numLines = 100;
-    const minLength = 50;
-    const maxLength = 300;
-
-    for (let i = 0; i < numLines; i++) {
-      const x = Math.random() * canvas.width;
-      const y = Math.random() * canvas.height;
-      const length = minLength + Math.random() * (maxLength - minLength);
-      const angle = Math.random() * Math.PI * 2;
-
-      lines.push(new Line(x, y, length, angle));
+    function createParticles() {
+      particles.length = 0;
+      const numberOfParticles = Math.min(75, Math.floor(canvas.width * canvas.height / 16000));
+      for (let i = 0; i < numberOfParticles; i++) {
+        particles.push(new Particle(
+          Math.random() * canvas.width,
+          Math.random() * canvas.height
+        ));
+      }
     }
-  }
-
-  function animateLines() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  for (const line of lines) {
-    let flexAmount = 0;
-
-    if (isHovered) {
-      const dist = Math.hypot(mouseX - line.x, mouseY - line.y);
-      flexAmount = dist < 200 ? (200 - dist) / 50 : 0; 
-
-      const gravity = 0.05; 
-      const dx = mouseX - line.x;
-      const dy = mouseY - line.y;
-      const angleToMouse = Math.atan2(dy, dx);
-      const angleDifference = angleToMouse - line.angle;
-      flexAmount += gravity * Math.sin(angleDifference);
+    function connectParticles() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 150) {
+            const opacity = (150 - distance) / 150 * 0.15;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
     }
-
-    line.angle += flexAmount;
-    line.draw();
-  }
-
-  requestAnimationFrame(animateLines);
-}
-
-  window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    lines.length = 0;
-    createLines();
-  });
-
-  window.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  canvas.addEventListener("mouseenter", () => {
-    isHovered = true;
-  });
-
-  canvas.addEventListener("mouseleave", () => {
-    isHovered = false;
-  });
-
-  createLines();
-  animateLines();
-</script>
-
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      connectParticles();
+      requestAnimationFrame(animate);
+    }
+    window.addEventListener("resize", () => { resizeCanvas(); createParticles(); });
+    document.addEventListener("mousemove", (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+    createParticles();
+    animate();
+  </script>
 </body>
 </html>
